@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Satya Hyma Residency</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Satya Hyma Residency</h1>
+            <p>Login to Your Account</p>
+        </div>
+
+        <div class="auth-box">
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required
+                           placeholder="Enter your username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required
+                           placeholder="Enter your password">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="register.html">Register here</a></p>
+                    <p><a href="index.html">Back to Home</a></p>
+                </div>
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            console.log('Attempting login for:', username);
+            
+            try {
+                const response = await fetch('/api/auth/manual-login?username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password), {
+                    method: 'POST'
+                });
+                
+                const result = await response.json();
+                
+                console.log('Login response:', result);
+                
+                if (response.ok) {
+                    messageDiv.textContent = 'Login successful! Redirecting to dashboard...';
+                    messageDiv.className = 'message success';
+                    console.log('Redirecting to:', result.redirectUrl);
+                    setTimeout(() => {
+                        window.location.href = result.redirectUrl;
+                    }, 2000);
+                } else {
+                    messageDiv.textContent = result.error || 'Login failed';
+                    messageDiv.className = 'message error';
+                    console.error('Login failed:', result);
+                }
+            } catch (error) {
+                messageDiv.textContent = 'An error occurred: ' + error.message;
+                messageDiv.className = 'message error';
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

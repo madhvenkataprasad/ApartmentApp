@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Satya Hyma Residency</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Satya Hyma Residency</h1>
+            <p>Resident Registration</p>
+        </div>
+
+        <div class="auth-box">
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required
+                           placeholder="Enter your username" minlength="3" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required
+                           placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required
+                           placeholder="Enter your password" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                           placeholder="Confirm your password" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="flatNumber">Flat Number</label>
+                    <input type="text" id="flatNumber" name="flatNumber" required
+                           placeholder="e.g., A-101">
+                </div>
+
+                <div class="form-group">
+                    <label for="secretCode">Apartment Secret Code</label>
+                    <input type="password" id="secretCode" name="secretCode" required
+                           placeholder="Enter apartment secret code">
+                    <small class="form-help">Contact your apartment management for the secret code</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Register As</label>
+                    <select id="role" name="role" required>
+                        <option value="RESIDENT">Resident</option>
+                        <option value="TREASURER">Treasurer</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="treasurerKeyGroup" style="display: none;">
+                    <label for="treasurerKey">Treasurer Key</label>
+                    <input type="password" id="treasurerKey" name="treasurerKey"
+                           placeholder="Enter treasurer key">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Register</button>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                    <p><a href="index.html">Back to Home</a></p>
+                </div>
+            </form>
+
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <script src="js/register.js"></script>
+</body>
+</html>

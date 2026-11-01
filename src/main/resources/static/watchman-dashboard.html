@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchman Dashboard - Satya Hyma Residency</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>Satya Hyma Residency</h1>
+                <p class="user-role">Watchman Dashboard</p>
+            </div>
+            <div class="header-right">
+                <span id="username" class="username"></span>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" data-tab="announcements">Announcements</button>
+            <button class="nav-btn" data-tab="create">Create Announcement</button>
+            <button class="nav-btn" data-tab="complaints">Complaints</button>
+        </nav>
+
+        <main class="dashboard-content">
+            <!-- Announcements Tab -->
+            <div id="announcements" class="tab-content active">
+                <h2>My Announcements</h2>
+                <div id="announcementsList" class="announcements-list"></div>
+            </div>
+
+            <!-- Create Announcement Tab -->
+            <div id="create" class="tab-content">
+                <h2>Create New Announcement</h2>
+                <form id="announcementForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="announcementTitle">Title</label>
+                        <input type="text" id="announcementTitle" name="title" required
+                               placeholder="Enter announcement title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcementContent">Content</label>
+                        <textarea id="announcementContent" name="content" required rows="5"
+                                  placeholder="Enter announcement content"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="announcementType">Type</label>
+                        <select id="announcementType" name="type" required>
+                            <option value="GENERAL">General</option>
+                            <option value="WATER_SUPPLY">Water Supply</option>
+                            <option value="ELECTRICITY">Electricity</option>
+                            <option value="CLEANING">Cleaning</option>
+                            <option value="SECURITY">Security</option>
+                            <option value="PARKING">Parking</option>
+                            <option value="MAINTENANCE_REMINDER">Maintenance Reminder</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Publish Announcement</button>
+                </form>
+            </div>
+
+            <!-- Complaints Tab -->
+            <div id="complaints" class="tab-content">
+                <h2>All Complaints</h2>
+                <div id="complaintsList" class="complaints-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <script src="js/watchman-dashboard.js"></script>
+</body>
+</html>
